@@ -29,7 +29,7 @@ def main() -> None:
     print(f"Distance between {pos_origin} and {pos_create}: {distance:.2f}")
     parse_coordinate = (3,4,0)
     print()
-    print(f"Parsing coordinates: {parse_coordinate}")
+    print(f'Parsing coordinates: "{",".join(map(str, parse_coordinate))}"')
     try:
          position = parse_position(parse_coordinate)
     except ValueError:
@@ -37,16 +37,21 @@ def main() -> None:
     else:
          print(f"Parsed position: {position}")
     distance = calculate_distance(parse_coordinate, pos_origin)
-    print(f"Distance between {pos_origin} and {parse_coordinate}: {distance:.2f}")
+    print(f"Distance between {pos_origin} and {parse_coordinate}: {distance:.1f}")
     print()
-    print(f"Parsing coordinates: {parse_coordinate}")
     parse_coordinate = ("abc", "def", "ghi")
+    print(f'Parsing invalid coordinates: "{",".join(map(str, parse_coordinate))}"')
     try:
          position = parse_position(parse_coordinate)
     except ValueError:
          pass
     else:
          print(f"Parsed position: {position}")
+    print()
+    print("Unpacking demonstration:")
+    x, y, z = position
+    print(f"Player at x={x}, y={y}, z={z}")
+    print(f"Coordinates: X={x}, Y={y}, Z={z}")
 
 
 if __name__ == "__main__":
